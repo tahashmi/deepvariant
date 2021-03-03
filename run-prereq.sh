@@ -117,12 +117,15 @@ pip3 install "${PIP_ARGS[@]}" git+https://github.com/google-research/tf-slim.git
 # Because of an issue with pypi's numpy on Ubuntu 14.04. we need to compile from
 # source. But we know that on 16.04 we don't need to compile from source
 # See https://github.com/tensorflow/tensorflow/issues/6968#issuecomment-279061085
-if [[ "$(lsb_release -d)" == *Ubuntu*16.04.* ]]; then
-  pip3 install "${PIP_ARGS[@]}" "numpy==${DV_TF_NUMPY_VERSION}"
-else
-  echo "Installing numpy with -no-binary=:all:. This will take a bit longer."
-  pip3 install "${PIP_ARGS[@]}" --no-binary=:all: "numpy==${DV_TF_NUMPY_VERSION}"
-fi
+
+#if [[ "$(lsb_release -d)" == *Ubuntu*16.04.* ]]; then
+#  pip3 install "${PIP_ARGS[@]}" "numpy==${DV_TF_NUMPY_VERSION}"
+#else
+#  echo "Installing numpy with -no-binary=:all:. This will take a bit longer."
+#  pip3 install "${PIP_ARGS[@]}" --no-binary=:all: "numpy==${DV_TF_NUMPY_VERSION}"
+#fi
+
+pip3 install numpy==1.18.5
 
 # Reason:
 # ========== [Wed Dec 11 19:57:32 UTC 2019] Stage 'Install python3 packages' starting
